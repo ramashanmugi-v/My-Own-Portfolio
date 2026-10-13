@@ -4,97 +4,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Ramashanmugi V - CSE (AI&ML) student and aspiring Java Full Stack developer">
     <title>Ramashanmugi Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="profile.jpg">
+    <link rel="icon" type="image/jpeg" href="profile.jpg">
 
     <style>
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
 
         body {
             margin: 0;
-            background-color:white;
+            background: white;
             color: black;
-            font-family: Arial;
+            font-family: "Segoe UI", Arial, sans-serif;
         }
 
         header {
-            background-color: navy;
+            background: linear-gradient(135deg, navy, mediumblue, darkslateblue);
             color: white;
-            padding: 20px;
+            padding: 60px 20px;
             text-align: center;
         }
 
+        header img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 0 25px lightblue;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        header h1 {
+            font-size: 40px;
+            letter-spacing: 1px;
+            margin: 20px 0 5px;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        header .btn {
+            background: white;
+            color: navy;
+            margin-top: 20px;
+        }
+
+        header .btn:hover {
+            background: lightblue;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         nav {
-            background-color: darkblue;
-            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: darkblue;
+            padding: 12px;
             text-align: center;
+            box-shadow: 0 2px 6px gray;
         }
 
         nav a {
             color: white;
-            margin: 10px;
+            margin: 0 6px;
+            padding: 6px 10px;
             text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s, border-color 0.3s;
         }
 
         nav a:hover {
             color: lightblue;
-        }
-        section {
-        background-color: transparent;
-        margin: 40px 80px;
-        padding: 30px 20px;
-        border: none;
+            border-bottom-color: lightblue;
         }
 
-        h2 {
-            color: navy;
-            text-align: left;
-            font-size: 28px;
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
+        section {
+            padding: 35px 0;
+            animation: fadeUp 1s ease both;
+        }
+
+        section h2 {
+            color: navy;
+            font-size: 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        section h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: royalblue;
+            margin: 8px auto 0;
+            border-radius: 4px;
+        }
+
+        h3 { color: darkblue; }
 
         p {
             font-size: 16px;
             line-height: 1.8;
         }
 
+        .about-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .about-img {
+            width: 280px;
+            max-width: 100%;
+            border-radius: 12px;
+            border: 5px solid lightblue;
+            box-shadow: 0 4px 14px gray;
+        }
+
+        .about-text {
+            flex: 1 1 300px;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .badges li {
+            background: navy;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 15px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .badges li:hover {
+            transform: translateY(-3px);
+            background: mediumblue;
+        }
+
+        .table-wrap { overflow-x: auto; }
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
 
-        th,
-        td {
-            border: 1px solid black;
+        th, td {
+            border: 1px solid gray;
             padding: 10px;
             text-align: center;
         }
 
         th {
-            background-color: navy;
+            background: navy;
             color: white;
         }
-	    tr:hover{
-	        background-color:lightblue;
+
+        tr:hover td { background: lightblue; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
+
+        .card {
+            background: aliceblue;
+            border-left: 5px solid navy;
+            border-radius: 8px;
+            padding: 5px 20px 15px;
+            box-shadow: 0 2px 8px lightgray;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 14px gray;
+        }
+
+        .card .tags span {
+            display: inline-block;
+            background: white;
+            border: 1px solid navy;
+            color: navy;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin: 2px 4px 2px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: navy;
+            color: white;
+            padding: 10px 22px;
+            margin: 5px 8px 5px 0;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover { background: mediumblue; }
+
         footer {
-            background-color: navy;
+            background: navy;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 5px 20px;
         }
-
     </style>
-
 </head>
 
 <body>
 
-    <header>
-        <h1>Ramashanmugi Portfolio</h1>
-        <p>Welcome to My Portfolio</p>
+    <header id="home">
+        <img src="profile.jpg" alt="Photo of Ramashanmugi V">
+        <h1>Ramashanmugi V</h1>
+        <p>CSE (AI&amp;ML) Student | Aspiring Java Full Stack Developer</p>
+        <a class="btn" href="#projects">View My Projects</a>
+        <a class="btn" href="#contact">Contact Me</a>
     </header>
 
     <nav>
-        <a href="#home">Home</a>
+        <a href="#intro">Home</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
@@ -102,153 +265,174 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <section id="home">
+    <main>
 
-        <h2>Introduction</h2>
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p>
+                Hello! I am a Computer Science and Engineering student
+                specializing in Artificial Intelligence and Machine
+                Learning, with a strong interest in Web Development
+                and Java Full Stack Development.
+            </p>
+        </section>
 
-        <p>
-            Hello! I am a Computer Science and Engineering student
-            specializing in Artificial Intelligence and Machine
-            Learning, with a strong interest in Web Development
-            and Java Full Stack Development.
-        </p>
-    </section>
-
-    <section id="about">
-
-        <h2>About Me </h2>
-        <h3>I'm Ramashanmugi V</h3>
-
-                <p>
-                    I am a B.E. Computer Science and Engineering
-                    student specializing in Artificial Intelligence
-                    and Machine Learning.
-                </p>
-
-                <p>
-                    I am interested in Web Development and Java
-                    Full Stack Development. I enjoy learning new
-                    technologies and developing practical projects
-                    to improve my programming and problem-solving
-                    skills.
-                </p>
-
-                <p>
-                    I am passionate about creating simple,
-                    responsive and user-friendly websites while
-                    continuously improving my technical knowledge.
-                </p>
-                
-
-    </section>
-
-    <section id="skills">
-
-        <h2>My Skills</h2>
-
-        <h3>Technical Skills</h3>
-
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Java</li>
-            <li>SQL</li>
-        </ul>
-
-        <h3>Learning Goals</h3>
-
-        <ol>
-            <li>Learn Java</li>
-            <li>Learn DSA</li>
-            <li>Build Projects</li>
-        </ol>
-
-    </section>
-
-    <section id="education">
-
-        <h2>Education</h2>
-
-        <table>
-
-            <tr>
-                <th>Course</th>
-                <th>Institution</th>
-                <th>Year</th>
-                <th>Result</th>
-            </tr>
-
-            <tr>
-                <td>B.E. CSE(AI&ML)</td>
-                <td>Mangayarkarasi College of Engineering</td>
-                <td>2024 - 2028</td>
-                <td>8.41 CGPA(upto 4th semester)</td>
-            </tr>
-
-            <tr>
-                <td>12th</td>
-                <td>O.C.P.M.Girls.Higher.Secondary.School</td>
-                <td>2024</td>
-                <td>69.17%</td>
-            </tr>
-            <tr>
-                <td>10th</td>
-                <td>O.C.P.M.Girls.Higher.Secondary.School</td>
-                <td>2022</td>
-                <td>75%</td>
-            </tr>
-
-        </table>
-
-    </section>
-
-    <section id="projects">
-
-        <h2>My Projects</h2>
-        <h3>Calculator</h3>
-
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-wrap">
+                <img class="about-img" src="profile(1).png" alt="Ramashanmugi V">
+                <div class="about-text">
+                    <h3>I'm Ramashanmugi V</h3>
                     <p>
-                        A simple and interactive calculator
-                        developed using HTML, CSS and JavaScript.
-                        It performs basic arithmetic operations
-                        with a clean user interface.
+                        I am a B.E. Computer Science and Engineering student
+                        specializing in Artificial Intelligence and Machine Learning.
                     </p>
-                    <ol>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                    </ol>
-    </section>
+                    <p>
+                        I am interested in Web Development and Java Full Stack
+                        Development. I enjoy learning new technologies and developing
+                        practical projects to improve my programming and
+                        problem-solving skills.
+                    </p>
+                    <p>
+                        I am passionate about creating simple, responsive and
+                        user-friendly websites while continuously improving my
+                        technical knowledge.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <section id="contact">
+        <section id="skills">
+            <h2>My Skills</h2>
 
-        <h2>Contact Me </h2>
+            <h3>Technical Skills</h3>
+            <ul class="badges">
+                <li>🌐 HTML</li>
+                <li>🎨 CSS</li>
+                <li>☕ Java</li>
+            </ul>
 
-        <p>
-            <strong>Email:</strong> ramashanmugi@example.com
-        </p>
+            <h3>Learning Goals</h3>
+            <ul class="badges">
+                <li>🚀 Java Full Stack</li>
+                <li>🧠 DSA</li>
+                <li>🛠️ Build Projects</li>
+            </ul>
+        </section>
 
-        <p>
-            <strong>Phone:</strong> +91 9994815358
-        </p>
+        <section id="education">
+            <h2>Education</h2>
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>Course</th>
+                        <th>Institution</th>
+                        <th>Year</th>
+                        <th>Result</th>
+                    </tr>
+                    <tr>
+                        <td>B.E. CSE (AI&amp;ML)</td>
+                        <td>Mangayarkarasi College of Engineering</td>
+                        <td>2024 - 2028</td>
+                        <td>8.41 CGPA (up to 4th semester)</td>
+                    </tr>
+                    <tr>
+                        <td>12th</td>
+                        <td>O.C.P.M. Girls Higher Secondary School</td>
+                        <td>2024</td>
+                        <td>69.17%</td>
+                    </tr>
+                    <tr>
+                        <td>10th</td>
+                        <td>O.C.P.M. Girls Higher Secondary School</td>
+                        <td>2022</td>
+                        <td>75%</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
 
-        <p>
-            <a href="https://github.com/" target="_blank">
-                Visit GitHub
-            </a>
-        </p>
-        <p>
-            <a href="https://Linkedin.com/in/ramashanmugi/" target="_blank">Visit Linkedin</a>
-        </p>
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="cards">
 
-    </section>
+                <div class="card">
+                    <h3>Online Banking System</h3>
+                    <p>
+                        A Java banking application with user registration, login,
+                        account creation, deposit, withdrawal, money transfer and
+                        transaction history, using MySQL and JDBC with DAO classes.
+                    </p>
+                    <div class="tags">
+                        <span>Java</span>
+                        <span>JDBC</span>
+                        <span>MySQL</span>
+                    </div>
+                    <a class="btn" href="https://github.com/ramashanmugi-v/OnlineBankingSystem" target="_blank" rel="noopener noreferrer">View Code</a>
+                </div>
+
+                <div class="card">
+                    <h3>Online Quiz Application</h3>
+                    <p>
+                        A Java quiz application with user login, multiple-choice
+                        questions, previous and next navigation, automatic scoring,
+                        PASS/FAIL result and quiz history stored in MySQL.
+                    </p>
+                    <div class="tags">
+                        <span>Java</span>
+                        <span>JDBC</span>
+                        <span>MySQL</span>
+                    </div>
+                    <a class="btn" href="https://github.com/ramashanmugi-v/Online-Quiz-Application" target="_blank" rel="noopener noreferrer">View Code</a>
+                </div>
+
+                <div class="card">
+                    <h3>Calculator</h3>
+                    <p>
+                        A simple and interactive calculator that performs
+                        basic arithmetic operations with a clean user interface.
+                    </p>
+                    <div class="tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <a class="btn" href="https://github.com/ramashanmugi-v/CODSOFT_TASKSNO3" target="_blank" rel="noopener noreferrer">View Code</a>
+                    <a class="btn" href="https://ramashanmugi-v.github.io/CODSOFT_TASKSNO3/" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                </div>
+
+                <div class="card">
+                    <h3>AI Career Guidance</h3>
+                    <p>
+                        An AI-powered career guidance platform designed to help
+                        students explore suitable career paths, analyze their skills
+                        and discover personalized learning opportunities.
+                    </p>
+                    <div class="tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>AI</span>
+                    </div>
+                    <a class="btn" href="https://github.com/ramashanmugi-v/CODSOFT_TASK2_LANDING_PAGE" target="_blank" rel="noopener noreferrer">View Code</a>
+                    <a class="btn" href="https://ramashanmugi-v.github.io/CODSOFT_TASK2_LANDING_PAGE/" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p><strong>Email:</strong> <a href="mailto:ramashanmugi@gmail.com">ramashanmugi@gmail.com</a></p>
+            <p><strong>Phone:</strong> +91 9994815358</p>
+            <a class="btn" href="https://github.com/ramashanmugi-v" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/ramashanmugi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </section>
+
+    </main>
 
     <footer>
-
-        <p>
-            &copy; 2026 Ramashanmugi Portfolio
-        </p>
-
+        <p>&copy; 2026 Ramashanmugi Portfolio</p>
     </footer>
 
 </body>
